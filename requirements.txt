@@ -1,0 +1,8 @@
+requests==2.31.0
+python-dotenv==1.0.0
+pyyaml==6.0.1
+sqlalchemy==2.0.25
+pymysql==1.1.0
+cryptography==42.0.0
+loguru==0.7.2
+jupyter==1.0.0

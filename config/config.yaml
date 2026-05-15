@@ -1,0 +1,29 @@
+# Adzuna API Settings
+adzuna:
+  base_url: "https://api.adzuna.com/v1/api/jobs"
+  country: "au"
+  results_per_page: 50
+  max_pages: 5
+  salary_include_unknown: 1
+  sort_by: "date"
+
+# Job titles to search
+job_titles:
+  - "data analyst"
+  - "data engineer"
+  - "data scientist"
+
+# Output settings
+output:
+  raw_data_dir: "data/raw"
+  date_format: "%Y-%m-%d"
+
+# Retry settings
+retry:
+  max_attempts: 3
+  backoff_seconds: 2
+
+# Logging
+logging:
+  level: "INFO"
+  log_dir: "logs"

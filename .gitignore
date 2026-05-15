@@ -1,0 +1,34 @@
+# Environment
+.env
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Data
+data/raw/
+data/staging/
+data/processed/
+*.log
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Power BI
+*.pbix.bak
+~$*
+
+# OS
+*.swp
+*.swo
