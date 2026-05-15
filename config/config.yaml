@@ -3,7 +3,7 @@ adzuna:
   base_url: "https://api.adzuna.com/v1/api/jobs"
   country: "au"
   results_per_page: 50
-  max_pages: 5
+  max_pages: 8
   salary_include_unknown: 1
   sort_by: "date"
 
@@ -12,6 +12,10 @@ job_titles:
   - "data analyst"
   - "data engineer"
   - "data scientist"
+  - "business analyst"
+  - "business intelligence"
+  - "analytics engineer"
+  - "machine learning engineer"USE adzuna_jobs;
 
 # Output settings
 output:
