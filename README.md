@@ -51,7 +51,7 @@ Dual deployment:
 
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/adzuna-job-market-pipeline.git
+git clone https://github.com/chihchuan35/adzuna-job-market-pipeline.git
 cd adzuna-job-market-pipeline
 
 # Create virtual environment
