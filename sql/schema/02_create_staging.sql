@@ -83,7 +83,7 @@ CREATE TABLE stg_jobs (
     INDEX idx_category  (category_tag),
     INDEX idx_posted    (posted_date),
     INDEX idx_salary    (salary_avg_final)
-)
+    
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci
