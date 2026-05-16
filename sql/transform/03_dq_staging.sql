@@ -69,28 +69,30 @@ SELECT
 FROM stg_jobs;
 
 -- ------------------------------------------------------------
--- CHECK 5: Fuzzy duplicate detection (Option A: detect only)
--- Same title + company + state but different job_id
--- This is the Amazon-style duplicate we decided NOT to remove
+-- CHECK 5b: Fuzzy duplicate detection (TIGHTENED)
+-- Adds suburb match + posted within 7 days of each other.
+-- This narrows the loose 27.3% upper bound toward a credible
+-- estimate of true Adzuna re-postings of the same job.
 -- ------------------------------------------------------------
 SELECT
-    '5. Fuzzy duplicates'                               AS check_name,
-    COUNT(*)                                            AS fuzzy_dup_groups,
-    SUM(dup_count)                                      AS total_affected_rows,
-    ROUND(100.0 * SUM(dup_count) /
+    '5b. Fuzzy dup (tightened)'                         AS check_name,
+    COUNT(*)                                            AS fuzzy_dup_pairs,
+    ROUND(100.0 * COUNT(*) /
         (SELECT COUNT(*)
     FROM stg_jobs), 1)             AS pct_of_total
 FROM (
     SELECT
-        title_normalized,
-        company_normalized,
-        state,
-        COUNT(*) AS dup_count
-    FROM stg_jobs
-    GROUP BY title_normalized, company_normalized, state
-    HAVING COUNT(*) > 1
-) AS dup_groups;
-
+        a.job_id AS id_a,
+        b.job_id AS id_b
+    FROM stg_jobs a
+        JOIN stg_jobs b
+        ON  a.title_normalized   = b.title_normalized
+            AND a.company_normalized = b.company_normalized
+            AND a.state              = b.state
+            AND a.suburb             = b.suburb
+            AND a.job_id < b.job_id
+            AND ABS(DATEDIFF(a.posted_date, b.posted_date)) <= 7
+) AS tight_pairs;
 -- ------------------------------------------------------------
 -- CHECK 6: Category diversity
 -- Expectation: multiple categories (validates EDA finding)
