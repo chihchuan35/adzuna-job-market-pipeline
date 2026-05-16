@@ -48,15 +48,17 @@ Staging layer validated with 8 automated DQ checks:
 
 ## 📁 Project Structure
 
+```
 .
-├── config/ # Configuration files
-├── src/ # Source code (extract, load, utils)
-├── pipelines/ # Pipeline orchestration scripts
+├── config/         # Configuration files
+├── src/            # Source code (extract, load, utils)
+├── pipelines/      # Pipeline orchestration scripts
 ├── sql/
-│ ├── schema/ # Table definitions (raw, staging)
-│ └── transform/ # ELT transform + DQ scripts
-├── notebooks/ # Exploratory analysis
-└── data/ # Local data storage (gitignored)
+│   ├── schema/     # Table definitions (raw, staging)
+│   └── transform/  # ELT transform + DQ scripts
+├── notebooks/      # Exploratory analysis
+└── data/           # Local data storage (gitignored)
+```
 
 ## 🚀 Setup
 
