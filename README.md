@@ -2,7 +2,7 @@
 
 End-to-end ETL pipeline analyzing the Australian data job market.
 
-> ✅ **Status**: Week 2 in progress - Staging layer & data quality complete (2,142 unique jobs)
+> ✅ **Status**: Week 2 complete — ELT transform & star schema operational (raw → staging → mart)
 
 ## 🎯 Business Questions
 
@@ -25,15 +25,32 @@ Dual deployment:
 
 - **Local**: MySQL + Power BI Desktop
 - **Cloud**: Microsoft Fabric Lakehouse + Power BI Service
+  **Pipeline flow**: 2,622 raw API rows → 2,142 deduplicated staging rows → star schema (1 fact + 5 dimensions + 1 bridge), 100% referential integrity.
 
-## 📋 Data Quality
+## 📋 Data Quality & Engineering Decisions
 
-Staging layer validated with 8 automated DQ checks:
+The pipeline validates every layer and documents source-data
+limitations rather than over-claiming completeness:
 
-- **Deduplication**: 2,622 raw rows → 2,142 unique jobs (PK uniqueness verified)
-- **Completeness**: 0 NULLs in title/company/date; 10.6% missing state (Adzuna source limitation)
-- **Fuzzy duplicates**: Detected & quantified (loose 27.3% → tightened ~5.1%); recorded as known limitation
-- **Salary gap**: 90.2% of jobs lack API salary → justifies regex extraction (next phase)
+- **Deduplication**: 2,622 raw rows → 2,142 unique jobs
+  (ROW_NUMBER dedup; PK uniqueness verified).
+- **Fuzzy duplicates**: detected and quantified — loose match
+  27.3% upper bound tightened to ~5.1%; recorded as known
+  limitation rather than risk false removals.
+- **Salary**: Adzuna AU API omits salary for ~90% of postings.
+  Text regex extraction was evaluated and rejected (low yield +
+  noise risk, e.g. funding amounts). Strategy: API-native salary
+  only with sanity cleaning (sub-30k AUD values invalidated as
+  errors). Final coverage 9.2%, documented as market limitation.
+- **Skills**: 31 curated low-ambiguity skills matched via
+  word-boundary REGEXP. Coverage capped at ~14% because the
+  Adzuna free API truncates descriptions at 500 characters,
+  cutting off skill sections — a source limitation, not a
+  matching defect.
+
+The consistent approach — _quantify the limitation, then make a
+defensible scoping decision_ — runs through salary, skills, and
+duplicate handling.
 
 ## 🛠️ Tech Stack
 
@@ -54,8 +71,8 @@ Staging layer validated with 8 automated DQ checks:
 ├── src/            # Source code (extract, load, utils)
 ├── pipelines/      # Pipeline orchestration scripts
 ├── sql/
-│   ├── schema/     # Table definitions (raw, staging)
-│   └── transform/  # ELT transform + DQ scripts
+│   ├── schema/      # Table definitions (raw, staging, mart)
+│   └── transform/   # ELT scripts (staging load, DQ, mart load, skills)
 ├── notebooks/      # Exploratory analysis
 └── data/           # Local data storage (gitignored)
 ```
