@@ -20,7 +20,7 @@ say:
 The Adzuna API only exposes jobs that are still open at the time of the call.
 Jobs that have been filled and closed never appear, regardless of when they
 were posted. This means our "trend" view is really a **snapshot of what was
-*still active* on the day we extracted**, not a true measure of how many jobs
+_still active_ on the day we extracted**, not a true measure of how many jobs
 were posted on each calendar day.
 
 **Implication**: The strong upward slope in the daily trend chart is partly a
@@ -51,12 +51,12 @@ Among the cities resolved at city granularity, **Sydney, Melbourne, and
 Brisbane lead by a wide margin**:
 
 | City      | Job postings (Mar 2 – May 15) |
-|-----------|-------------------------------|
-| Sydney    | 690 |
-| Melbourne | 255 |
-| Brisbane  | 173 |
-| Adelaide  | 54  |
-| Perth     | 47  |
+| --------- | ----------------------------- |
+| Sydney    | 500                           |
+| Melbourne | 191                           |
+| Brisbane  | 130                           |
+| Adelaide  | 41                            |
+| Perth     | 38                            |
 
 A further 373 postings (17.7% of the dataset) lack a city-level location and
 appear as "Unknown" — the Adzuna source returns only `country = Australia`
@@ -125,7 +125,7 @@ window), the top-mentioned skills shift compared to the full-period ranking:
 **Takeaway**: For the May snapshot, cloud platform proficiency appears more
 heavily emphasised in postings than foundational programming languages. One
 plausible reading is that Python and SQL are increasingly treated as
-*assumed* baseline skills (and thus less often called out explicitly), while
+_assumed_ baseline skills (and thus less often called out explicitly), while
 cloud platform names are listed precisely because they differentiate roles.
 This matches my own anecdotal experience reading Australian data job ads.
 
@@ -135,11 +135,11 @@ This matches my own anecdotal experience reading Australian data job ads.
 
 Rolling the top-mentioned skills into broader categories:
 
-| Category        | Examples                                |
-|-----------------|-----------------------------------------|
-| **Cloud**       | AWS, Azure, GCP                         |
-| **Database**    | SQL, Snowflake, Databricks, Lakehouse   |
-| **BI tooling**  | Power BI, Tableau                       |
+| Category       | Examples                              |
+| -------------- | ------------------------------------- |
+| **Cloud**      | AWS, Azure, GCP                       |
+| **Database**   | SQL, Snowflake, Databricks, Lakehouse |
+| **BI tooling** | Power BI, Tableau                     |
 
 These three categories cover the majority of skill mentions. Programming
 languages (Python, Scala) and modelling toolkits (ML, scikit-learn-class
@@ -165,7 +165,7 @@ filters will miss substantial volume.
 
 ---
 
-## What this analysis *cannot* say
+## What this analysis _cannot_ say
 
 For clarity, here is what the data and methodology **do not support**:
 
@@ -173,7 +173,7 @@ For clarity, here is what the data and methodology **do not support**:
   taxonomy is too coarse to separate these reliably, and parsing role from
   title-string is not reliable enough to ship. The dashboard does not break
   salary out by role family for this reason.
-- **A real time series of *posting* activity** — see Constraint 1. The
+- **A real time series of _posting_ activity** — see Constraint 1. The
   dashboard's daily trend is honestly labelled as showing only currently-
   active jobs.
 - **Skill demand below the long tail** — anything mentioned in fewer than ~5
