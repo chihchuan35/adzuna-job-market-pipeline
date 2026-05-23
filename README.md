@@ -2,14 +2,14 @@
 
 End-to-end ETL pipeline analyzing the Australian data job market, implemented in two parallel SQL dialects (MySQL on-prem and Microsoft Fabric Warehouse) sharing a single design.
 
-> ✅ **Status**: Week 3 complete — full pipeline ported to Microsoft Fabric (Lakehouse bronze + Warehouse silver/gold). Power BI Direct Lake dashboard coming in Week 4.
+> ✅ **Status**: Week 4 complete — full medallion pipeline from Adzuna API to Power BI Direct Lake on Microsoft Fabric. Findings in [`INSIGHTS.md`](INSIGHTS.md); weekly retrospectives in [`docs/lessons/`](docs/lessons/).
 
 ## 🎯 Business Questions
 
 This project answers:
 
 - Which cities and companies are hiring data professionals in Australia?
-- How do salary ranges compare across Data Analyst, Data Engineer, and Data Scientist roles?
+- What does the salary distribution look like for the roles that disclose pay?
 - What are the most in-demand technical skills?
 - How does demand trend over time?
 
@@ -28,7 +28,8 @@ Cloud pipeline (Week 3):
                   ↓ cross-DB read via 3-part naming
             → Fabric Warehouse adzuna_warehouse
                   (T-SQL: staging + star schema)
-            → Power BI Direct Lake (Week 4)
+            → Power BI Direct Lake semantic model
+            → Two-page report (overview + trend analysis)
 ```
 
 Both paths land on the same 7-table star schema with **100% referential integrity**. The Fabric implementation reuses the design but required full MySQL → T-SQL dialect translation; the catalogue of differences encountered is documented in [`docs/migration-mysql-to-fabric-warehouse.md`](docs/migration-mysql-to-fabric-warehouse.md).
@@ -56,12 +57,10 @@ limitations rather than over-claiming completeness:
   Adzuna free API truncates descriptions at 500 characters,
   cutting off skill sections — a source limitation, not a
   matching defect.
-- **Cross-dialect parity** (Week 3): 7 of 8 tables in Fabric
-  Warehouse match the MySQL row counts exactly; `dim_company`
-  differs by +1 (812 vs 811, +0.12%), traced to a subtle
-  unicode-whitespace handling difference between MySQL `TRIM()`
-  and T-SQL `LTRIM(RTRIM())`. Documented as a known dialect
-  quirk rather than masked.
+- **Cross-dialect parity** (Week 3): all 8 tables in the Fabric
+  Warehouse mart match the MySQL row counts on the same source
+  data. Quantified DQ outputs (NULL rates, range checks,
+  fuzzy-dup detection) reproduce on both engines.
 
 The consistent approach — _quantify the limitation, then make a
 defensible scoping decision_ — runs through salary, skills,
@@ -120,7 +119,24 @@ cp .env.example .env
 
 ## 📊 Dashboards
 
-_Coming in Week 4 — Power BI Direct Lake connection to Fabric Warehouse, leveraging OneLake shared storage for zero-copy analytics._
+Two-page Power BI report served from the Fabric Warehouse via Direct Lake (zero-copy reads against OneLake Parquet).
+
+**Page 1 — Market Overview** (KPIs, top cities, top companies, salary distribution, top skills):
+
+![Dashboard Page 1 — Overview](docs/screenshots/page1_overview.png)
+
+**Page 2 — Trend Analysis** (daily posting volume across the 61-day analysis window):
+
+![Dashboard Page 2 — Trend Analysis](docs/screenshots/page2_trend_analysis.png)
+
+> The report is hosted on a Direct Lake semantic model, which is not eligible for public web embed. Live walkthrough available on request. See [`docs/lessons/week4-powerbi-direct-lake.md`](docs/lessons/week4-powerbi-direct-lake.md) for the architectural trade-off.
+
+Weekly retrospectives:
+
+- [Week 1 — Extraction and toolchain](docs/lessons/week1-extraction-and-toolchain.md)
+- [Week 2 — Transform, dedup, and DQ](docs/lessons/week2-transform-and-dq.md)
+- [Week 3 — MySQL → Fabric migration](docs/lessons/week3-mysql-to-fabric-migration.md)
+- [Week 4 — Power BI Direct Lake](docs/lessons/week4-powerbi-direct-lake.md)
 
 ## 📝 License
 
