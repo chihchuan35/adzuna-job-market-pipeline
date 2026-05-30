@@ -117,19 +117,6 @@ cp .env.example .env
 # Edit .env with your credentials
 ```
 
-## 📊 Dashboards
-
-Two-page Power BI report served from the Fabric Warehouse via Direct Lake (zero-copy reads against OneLake Parquet).
-
-**Page 1 — Market Overview** (KPIs, top cities, top companies, salary distribution, top skills):
-
-![Dashboard Page 1 — Overview](docs/screenshots/page1_overview.png)
-
-**Page 2 — Trend Analysis** (daily posting volume across the 61-day analysis window):
-
-![Dashboard Page 2 — Trend Analysis](docs/screenshots/page2_trend_analysis.png)
-
-> The report is hosted on a Direct Lake semantic model, which is not eligible for public web embed. Live walkthrough available on request. See [`docs/lessons/week4-powerbi-direct-lake.md`](docs/lessons/week4-powerbi-direct-lake.md) for the architectural trade-off.
 
 Weekly retrospectives:
 
