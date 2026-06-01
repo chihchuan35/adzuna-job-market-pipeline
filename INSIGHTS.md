@@ -1,3 +1,5 @@
+![Dashboard Overview](docs/screenshots/dashboard_overview.png)
+
 # Insights — Australian Data Job Market
 
 This document captures the analytical findings from the Power BI dashboard
