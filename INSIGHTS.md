@@ -1,6 +1,6 @@
 # Insights — Australian Data Job Market
 
-![Dashboard Overview](https://i.meee.com.tw/r7mHWe3.png)
+![Dashboard Overview](https://i.meee.com.tw/tF0ZXu4.png)
 
 This document captures the analytical findings...
 
@@ -56,13 +56,13 @@ Brisbane lead by a wide margin**:
 
 | City      | Job postings (Mar 2 – May 15) |
 | --------- | ----------------------------- |
-| Sydney    | 482                           |
-| Melbourne | 184                           |
-| Brisbane  | 124                           |
-| Adelaide  | 40                            |
-| Perth     | 35                            |
+| Sydney    | 500                           |
+| Melbourne | 191                           |
+| Brisbane  | 130                           |
+| Adelaide  | 41                            |
+| Perth     | 38                            |
 
-A further 295 postings (19.1% of the dataset) lack a city-level location and
+A further 302 postings (18.9% of the dataset) lack a city-level location and
 appear as "Unknown" — the Adzuna source returns only `country = Australia`
 for these without further granularity. They are not excluded, so the reader
 can see the magnitude of the coverage gap directly.
@@ -74,10 +74,10 @@ Adelaide (where I am based) ranks 6th — a smaller market, but not absent.
 
 ## Finding 2 — Mean salary exceeds median, suggesting a senior-heavy market
 
-For the 9.8% of postings (150 jobs) that disclose salary:
+For the 9.8% of postings (156 jobs) that disclose salary:
 
-- **Average salary**: $148,580 AUD
-- **Median salary**: $136,060 AUD
+- **Average salary**: $149,120 AUD
+- **Median salary**: $138,760 AUD
 
 The mean sits ~10% above the median. In a roughly symmetric distribution
 these would be close; a sustained gap of this size implies the distribution
@@ -103,7 +103,7 @@ Tightening the window to **May 1 – May 15** (the period with the densest
 daily ingestion):
 
 - **1,500+ job postings** (~71% of the 61-day total, in 14% of the days)
-- **649 distinct companies**
+- **668 distinct companies**
 
 **Takeaway**: The mid-May window concentrates a disproportionate share of the
 postings — partly real market activity, partly the pipeline-maturity effect
