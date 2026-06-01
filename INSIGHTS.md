@@ -1,14 +1,12 @@
 # Insights — Australian Data Job Market
 
-![Dashboard Overview](https://i.meee.com.tw/zlp4HTt.png)
+![Dashboard Overview](https://i.meee.com.tw/r7mHWe3.png)
 
 This document captures the analytical findings...
 
 # Insights — Australian Data Job Market
 
 This document captures the analytical findings from the Power BI dashboard
-built in Week 4. The data spans **2026-03-02 to 2026-05-15** — 61 active days
-of postings extracted from the Adzuna AU API.
 
 The findings are presented honestly: where the data supports a strong claim, I
 state it directly; where the source's known limitations cap what I can
@@ -49,8 +47,6 @@ even thinner at 9.2%, but for a different reason — Australian job listings
 conventionally do not disclose salary publicly, and Adzuna passes that gap
 through. Both numbers are reported on the dashboard so readers can calibrate.
 
-https://i.meee.com.tw/zlp4HTt.png
-
 ---
 
 ## Finding 1 — Hiring is concentrated on the east coast
@@ -60,13 +56,13 @@ Brisbane lead by a wide margin**:
 
 | City      | Job postings (Mar 2 – May 15) |
 | --------- | ----------------------------- |
-| Sydney    | 500                           |
-| Melbourne | 191                           |
-| Brisbane  | 130                           |
-| Adelaide  | 41                            |
-| Perth     | 38                            |
+| Sydney    | 482                           |
+| Melbourne | 184                           |
+| Brisbane  | 124                           |
+| Adelaide  | 40                            |
+| Perth     | 35                            |
 
-A further 373 postings (17.7% of the dataset) lack a city-level location and
+A further 295 postings (19.1% of the dataset) lack a city-level location and
 appear as "Unknown" — the Adzuna source returns only `country = Australia`
 for these without further granularity. They are not excluded, so the reader
 can see the magnitude of the coverage gap directly.
@@ -78,10 +74,10 @@ Adelaide (where I am based) ranks 6th — a smaller market, but not absent.
 
 ## Finding 2 — Mean salary exceeds median, suggesting a senior-heavy market
 
-For the 9.2% of postings (197 jobs) that disclose salary:
+For the 9.8% of postings (150 jobs) that disclose salary:
 
-- **Average salary**: $154,810 AUD
-- **Median salary**: $140,000 AUD
+- **Average salary**: $148,580 AUD
+- **Median salary**: $136,060 AUD
 
 The mean sits ~10% above the median. In a roughly symmetric distribution
 these would be close; a sustained gap of this size implies the distribution
@@ -91,7 +87,7 @@ $200K and $200K+, alongside the dominant $130K–$160K mid-band.
 
 **Takeaway**: Senior data professionals appear to command meaningful premiums
 in the Australian market — high-end salaries are common enough to lift the
-mean noticeably above the median, even on a small (n=197) sample.
+mean noticeably above the median, even on a small (n=150) sample.
 
 ---
 
@@ -99,10 +95,9 @@ mean noticeably above the median, even on a small (n=197) sample.
 
 Across the full 61-day window (March 2 – May 15, 2026):
 
-- **2,110 job postings**
-- **805 distinct companies**
-- Salary distribution skewed toward the $100K–$160K bands (the bulk of mid-
-  band entries)
+2,110 job postings
+805 distinct companies
+Salary distribution skewed toward the $100K–$160K bands (the bulk of mid- band entries)
 
 Tightening the window to **May 1 – May 15** (the period with the densest
 daily ingestion):
