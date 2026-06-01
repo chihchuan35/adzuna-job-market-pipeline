@@ -1,4 +1,8 @@
-![Dashboard Overview](docs/screenshots/dashboard_overview.png)
+# Insights — Australian Data Job Market
+
+![Dashboard Overview](https://i.meee.com.tw/zlp4HTt.png)
+
+This document captures the analytical findings...
 
 # Insights — Australian Data Job Market
 
