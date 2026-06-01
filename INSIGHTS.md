@@ -54,7 +54,7 @@ through. Both numbers are reported on the dashboard so readers can calibrate.
 Among the cities resolved at city granularity, **Sydney, Melbourne, and
 Brisbane lead by a wide margin**:
 
-| City      | Job postings (Mar 2 – May 15) |
+| City      | Job postings (Mar 1 – May 15) |
 | --------- | ----------------------------- |
 | Sydney    | 500                           |
 | Melbourne | 191                           |
