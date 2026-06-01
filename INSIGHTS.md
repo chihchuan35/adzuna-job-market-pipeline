@@ -43,6 +43,8 @@ even thinner at 9.2%, but for a different reason — Australian job listings
 conventionally do not disclose salary publicly, and Adzuna passes that gap
 through. Both numbers are reported on the dashboard so readers can calibrate.
 
+https://i.meee.com.tw/zlp4HTt.png
+
 ---
 
 ## Finding 1 — Hiring is concentrated on the east coast
